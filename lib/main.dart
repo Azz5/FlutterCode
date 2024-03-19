@@ -17,7 +17,7 @@ class _MoneyAppState extends State<MoneyApp> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        :
+        
       ),
     );
   }
