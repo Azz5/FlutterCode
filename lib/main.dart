@@ -14,6 +14,11 @@ class MoneyApp extends StatefulWidget {
 }
 
 class _MoneyAppState extends State<MoneyApp> {
+  var isFoodTrue = false;
+  var isEntertainmentTrue = false;
+  var isInvestTrue = false;
+  var isBillsTrue = false;
+  var isSavingTrue = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +40,7 @@ class _MoneyAppState extends State<MoneyApp> {
           Column(
             children: [
               Row(
-                children: [_SalaryField()],
+                children: [Expanded(child: _SalaryField())],
               ), // widdgets folder
               Row(
                 children: [_Choices()],
@@ -43,7 +48,7 @@ class _MoneyAppState extends State<MoneyApp> {
             ],
           ),
           Column(children: [
-            if (/*_Choices().isFoodTrue*/ true)
+            if (isFoodTrue)
               Row(children: [
                 Row(
                   children: [Text("Food")],
@@ -61,7 +66,7 @@ class _MoneyAppState extends State<MoneyApp> {
                   ],
                 )
               ]),
-            if (/*_Choices().isSavingTrue*/ true)
+            if (isSavingTrue)
               Row(children: [
                 Row(
                   children: [Text("Food")],
@@ -79,7 +84,7 @@ class _MoneyAppState extends State<MoneyApp> {
                   ],
                 )
               ]),
-            if (/*_Choices().isInvestTrue*/ true)
+            if (isInvestTrue)
               Row(children: [
                 Row(
                   children: [Text("Food")],
@@ -97,7 +102,7 @@ class _MoneyAppState extends State<MoneyApp> {
                   ],
                 )
               ]),
-            if (/*_Choices().isEntertainmentTrue*/ true)
+            if (isEntertainmentTrue)
               Row(children: [
                 Row(
                   children: [Text("Food")],
@@ -115,7 +120,7 @@ class _MoneyAppState extends State<MoneyApp> {
                   ],
                 )
               ]),
-            if (/*_Choices().isBillsTrue*/ true)
+            if (isBillsTrue)
               Row(children: [
                 Row(
                   children: [Text("Food")],
@@ -145,6 +150,60 @@ class _MoneyAppState extends State<MoneyApp> {
   }
 
   Widget _Choices() {
-    return Container();
+    return Container(
+        child: Row(
+      children: [
+        Column(
+          children: [
+            const Text("Food"),
+            Checkbox(
+                value: false,
+                onChanged: (value) {
+                  isFoodTrue = value!;
+                })
+          ],
+        ),
+        Column(
+          children: [
+            const Text("Entertainment"),
+            Checkbox(
+                value: true,
+                onChanged: (value) {
+                  isEntertainmentTrue = value!;
+                })
+          ],
+        ),
+        Column(
+          children: [
+            const Text("Investment"),
+            Checkbox(
+                value: false,
+                onChanged: (value) {
+                  isInvestTrue = value!;
+                })
+          ],
+        ),
+        Column(
+          children: [
+            const Text("Bills"),
+            Checkbox(
+                value: false,
+                onChanged: (value) {
+                  isBillsTrue = value!;
+                })
+          ],
+        ),
+        Column(
+          children: [
+            const Text("Saving"),
+            Checkbox(
+                value: isSavingTrue,
+                onChanged: (value) {
+                  isSavingTrue = value!;
+                })
+          ],
+        ),
+      ],
+    ));
   }
 }
