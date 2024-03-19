@@ -19,6 +19,9 @@ class _MoneyAppState extends State<MoneyApp> {
   var isInvestTrue = false;
   var isBillsTrue = false;
   var isSavingTrue = false;
+  var totalNumofChoices = 0;
+  var AmountofMoney = 0;
+  var Percentage = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,7 +76,7 @@ class _MoneyAppState extends State<MoneyApp> {
                     child: Column(
                       children: [
                         Row(children: [Text("Value %")]),
-                        Row(children: [Text("Data")]),
+                        Row(children: [Text("%$Percentage")]),
                       ],
                     ),
                   ),
@@ -81,7 +84,7 @@ class _MoneyAppState extends State<MoneyApp> {
                     child: Column(
                       children: [
                         Row(children: [Text("Percentage %")]),
-                        Row(children: [Text("Data")]),
+                        Row(children: [Text("%$Percentage")]),
                       ],
                     ),
                   )
@@ -90,7 +93,7 @@ class _MoneyAppState extends State<MoneyApp> {
                 Row(children: [
                   Expanded(
                     child: Row(
-                      children: [Text("Food")],
+                      children: [Text("Saving")],
                     ),
                   ),
                   Expanded(
@@ -105,7 +108,7 @@ class _MoneyAppState extends State<MoneyApp> {
                     child: Column(
                       children: [
                         Row(children: [Text("Percentage %")]),
-                        Row(children: [Text("Data")]),
+                        Row(children: [Text("%$Percentage")]),
                       ],
                     ),
                   )
@@ -114,7 +117,7 @@ class _MoneyAppState extends State<MoneyApp> {
                 Row(children: [
                   Expanded(
                     child: Row(
-                      children: [Text("Food")],
+                      children: [Text("Investment")],
                     ),
                   ),
                   Expanded(
@@ -129,7 +132,7 @@ class _MoneyAppState extends State<MoneyApp> {
                     child: Column(
                       children: [
                         Row(children: [Text("Percentage %")]),
-                        Row(children: [Text("Data")]),
+                        Row(children: [Text("%$Percentage")]),
                       ],
                     ),
                   )
@@ -138,7 +141,7 @@ class _MoneyAppState extends State<MoneyApp> {
                 Row(children: [
                   Expanded(
                     child: Row(
-                      children: [Text("Food")],
+                      children: [Text("Entertainment")],
                     ),
                   ),
                   Expanded(
@@ -153,7 +156,7 @@ class _MoneyAppState extends State<MoneyApp> {
                     child: Column(
                       children: [
                         Row(children: [Text("Percentage %")]),
-                        Row(children: [Text("Data")]),
+                        Row(children: [Text("%$Percentage")]),
                       ],
                     ),
                   )
@@ -162,7 +165,7 @@ class _MoneyAppState extends State<MoneyApp> {
                 Row(children: [
                   Expanded(
                     child: Row(
-                      children: [Text("Food")],
+                      children: [Text("Bills")],
                     ),
                   ),
                   Expanded(
@@ -177,7 +180,7 @@ class _MoneyAppState extends State<MoneyApp> {
                     child: Column(
                       children: [
                         Row(children: [Text("Percentage %")]),
-                        Row(children: [Text("Data")]),
+                        Row(children: [Text("%$Percentage")]),
                       ],
                     ),
                   )
@@ -190,8 +193,14 @@ class _MoneyAppState extends State<MoneyApp> {
   }
 
   Widget _SalaryField() {
-    setState(() {});
-    return Expanded(child: TextField());
+    return Expanded(child: TextField(
+      onSubmitted: (value) {
+        AmountofMoney = int.parse(value);
+
+        calctotal();
+        setState(() {});
+      },
+    ));
   }
 
   Widget _Choices() {
@@ -206,6 +215,9 @@ class _MoneyAppState extends State<MoneyApp> {
                   value: isFoodTrue,
                   onChanged: (value) {
                     isFoodTrue = value!;
+                    calctotal();
+
+                    calctotal();
                     setState(() {});
                   })
             ],
@@ -219,6 +231,7 @@ class _MoneyAppState extends State<MoneyApp> {
                   value: isEntertainmentTrue,
                   onChanged: (value) {
                     isEntertainmentTrue = value!;
+                    calctotal();
                     setState(() {});
                   })
             ],
@@ -232,6 +245,8 @@ class _MoneyAppState extends State<MoneyApp> {
                   value: isInvestTrue,
                   onChanged: (value) {
                     isInvestTrue = value!;
+
+                    calctotal();
                     setState(() {});
                   })
             ],
@@ -245,6 +260,7 @@ class _MoneyAppState extends State<MoneyApp> {
                   value: isBillsTrue,
                   onChanged: (value) {
                     isBillsTrue = value!;
+                    calctotal();
                     setState(() {});
                   })
             ],
@@ -258,6 +274,8 @@ class _MoneyAppState extends State<MoneyApp> {
                   value: isSavingTrue,
                   onChanged: (value) {
                     isSavingTrue = value!;
+                    calctotal();
+                    calctotal();
                     setState(() {});
                   })
             ],
@@ -265,5 +283,16 @@ class _MoneyAppState extends State<MoneyApp> {
         ),
       ],
     ));
+  }
+
+  int calctotal() {
+    totalNumofChoices = 0;
+    if (isBillsTrue) totalNumofChoices += 1;
+    if (isEntertainmentTrue) totalNumofChoices += 1;
+    if (isFoodTrue) totalNumofChoices += 1;
+    if (isInvestTrue) totalNumofChoices += 1;
+    if (isSavingTrue) totalNumofChoices += 1;
+    Percentage = (100 / totalNumofChoices) as int;
+    return totalNumofChoices;
   }
 }
