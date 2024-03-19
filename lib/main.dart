@@ -157,9 +157,10 @@ class _MoneyAppState extends State<MoneyApp> {
           children: [
             const Text("Food"),
             Checkbox(
-                value: false,
+                value: isFoodTrue,
                 onChanged: (value) {
                   isFoodTrue = value!;
+                  setState(() {});
                 })
           ],
         ),
@@ -167,9 +168,10 @@ class _MoneyAppState extends State<MoneyApp> {
           children: [
             const Text("Entertainment"),
             Checkbox(
-                value: true,
+                value: isEntertainmentTrue,
                 onChanged: (value) {
                   isEntertainmentTrue = value!;
+                  setState(() {});
                 })
           ],
         ),
@@ -177,9 +179,10 @@ class _MoneyAppState extends State<MoneyApp> {
           children: [
             const Text("Investment"),
             Checkbox(
-                value: false,
+                value: isInvestTrue,
                 onChanged: (value) {
                   isInvestTrue = value!;
+                  setState(() {});
                 })
           ],
         ),
@@ -187,9 +190,10 @@ class _MoneyAppState extends State<MoneyApp> {
           children: [
             const Text("Bills"),
             Checkbox(
-                value: false,
+                value: isBillsTrue,
                 onChanged: (value) {
                   isBillsTrue = value!;
+                  setState(() {});
                 })
           ],
         ),
@@ -200,6 +204,7 @@ class _MoneyAppState extends State<MoneyApp> {
                 value: isSavingTrue,
                 onChanged: (value) {
                   isSavingTrue = value!;
+                  setState(() {});
                 })
           ],
         ),
