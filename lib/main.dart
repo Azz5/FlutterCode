@@ -35,7 +35,7 @@ class _MoneyAppState extends State<MoneyApp> {
           Column(
             children: [
               Row(
-                children: [_SalaryField()],
+                children: [Text("Enter Salary: "),_SalaryField(), Text("SAR")],
               ), // widdgets folder
               Row(
                 children: [_Choices()],
@@ -140,7 +140,10 @@ class _MoneyAppState extends State<MoneyApp> {
   }
 
   Widget _SalaryField() {
-    setState(() {});
+
+    setState(() {
+      
+    });
     return TextField();
   }
 
