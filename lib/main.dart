@@ -14,6 +14,11 @@ class MoneyApp extends StatefulWidget {
 }
 
 class _MoneyAppState extends State<MoneyApp> {
+  var isFoodTrue = false;
+  var isEntertainmentTrue = false;
+  var isInvestTrue = false;
+  var isBillsTrue = false;
+  var isSavingTrue = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,7 +48,7 @@ class _MoneyAppState extends State<MoneyApp> {
             ],
           ),
           Column(children: [
-            if (/*_Choices().isFoodTrue*/ true)
+            if (isFoodTrue)
               Row(children: [
                 Row(
                   children: [Text("Food")],
@@ -61,7 +66,7 @@ class _MoneyAppState extends State<MoneyApp> {
                   ],
                 )
               ]),
-            if (/*_Choices().isSavingTrue*/ true)
+            if (isSavingTrue)
               Row(children: [
                 Row(
                   children: [Text("Food")],
@@ -79,7 +84,7 @@ class _MoneyAppState extends State<MoneyApp> {
                   ],
                 )
               ]),
-            if (/*_Choices().isInvestTrue*/ true)
+            if (isInvestTrue)
               Row(children: [
                 Row(
                   children: [Text("Food")],
@@ -97,7 +102,7 @@ class _MoneyAppState extends State<MoneyApp> {
                   ],
                 )
               ]),
-            if (/*_Choices().isEntertainmentTrue*/ true)
+            if (isEntertainmentTrue)
               Row(children: [
                 Row(
                   children: [Text("Food")],
@@ -115,7 +120,7 @@ class _MoneyAppState extends State<MoneyApp> {
                   ],
                 )
               ]),
-            if (/*_Choices().isBillsTrue*/ true)
+            if (isBillsTrue)
               Row(children: [
                 Row(
                   children: [Text("Food")],
@@ -148,6 +153,65 @@ class _MoneyAppState extends State<MoneyApp> {
   }
 
   Widget _Choices() {
-    return Container();
+    return Container(
+        child: Row(
+      children: [
+        Column(
+          children: [
+            const Text("Food"),
+            Checkbox(
+                value: isFoodTrue,
+                onChanged: (value) {
+                  isFoodTrue = value!;
+                  setState(() {});
+                })
+          ],
+        ),
+        Column(
+          children: [
+            const Text("Entertainment"),
+            Checkbox(
+                value: isEntertainmentTrue,
+                onChanged: (value) {
+                  isEntertainmentTrue = value!;
+                  setState(() {});
+                })
+          ],
+        ),
+        Column(
+          children: [
+            const Text("Investment"),
+            Checkbox(
+                value: isInvestTrue,
+                onChanged: (value) {
+                  isInvestTrue = value!;
+                  setState(() {});
+                })
+          ],
+        ),
+        Column(
+          children: [
+            const Text("Bills"),
+            Checkbox(
+                value: isBillsTrue,
+                onChanged: (value) {
+                  isBillsTrue = value!;
+                  setState(() {});
+                })
+          ],
+        ),
+        Column(
+          children: [
+            const Text("Saving"),
+            Checkbox(
+                value: isSavingTrue,
+                onChanged: (value) {
+                  isSavingTrue = value!;
+                  setState(() {});
+                })
+          ],
+        ),
+      ],
+    ));
   }
 }
