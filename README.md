@@ -1,3 +1,3 @@
 # third_day
 
-A new Flutter project.
+Basic Flutter app to calculate budget created to compete in the Flutter mini hackathon by GDSC.
